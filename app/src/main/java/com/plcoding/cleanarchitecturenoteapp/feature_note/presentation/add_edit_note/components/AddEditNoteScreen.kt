@@ -62,11 +62,10 @@ fun AddEditNoteScreen(
         }
     }
 
-
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = { viewModel.onEvent(AddEditNoteEvent.SaveNote) },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save note")

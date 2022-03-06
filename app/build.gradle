@@ -45,7 +45,7 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    configurations { implementation.exclude group: 'org.jetbrains', module: 'annotations' }
+    configurations { implementation.exclude group: 'com.intellij', module: 'annotations' }
 }
 
 dependencies {
@@ -77,13 +77,12 @@ dependencies {
     // Hilt
     implementation libs.hilt.android
     kapt libs.hilt.android.compiler
-    implementation libs.androidx.hilt.lifecycle.viewmodel
     kapt libs.androidx.hilt.compiler
     implementation libs.androidx.hilt.navigation.compose
 
     // Room
     implementation libs.androidx.room.runtime
-    implementation libs.androidx.room.compiler
+    kapt libs.androidx.room.compiler
     implementation libs.androidx.room.ktx
 
     // Test

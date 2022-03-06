@@ -26,17 +26,20 @@ class AddEditNoteViewModel @Inject constructor(
             hint = "Enter title..."
         )
     )
-    val noteTitle: NoteTextFieldState = _noteTitle
+    val noteTitle: NoteTextFieldState
+        get() = _noteTitle
 
     private var _noteContent by mutableStateOf(
         NoteTextFieldState(
             hint = "Enter some content..."
         )
     )
-    val noteContent: NoteTextFieldState = _noteContent
+    val noteContent: NoteTextFieldState
+        get() = _noteContent
 
     private var _noteColor by mutableStateOf(Note.noteColors.random().toArgb())
-    val noteColor: Int = _noteColor
+    val noteColor: Int
+        get() = _noteColor
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
@@ -82,7 +85,7 @@ class AddEditNoteViewModel @Inject constructor(
                     text = event.value
                 )
             }
-            is AddEditNoteEvent.ChangeTitleFocus -> {
+            is AddEditNoteEvent.ChangeContentFocus -> {
                 _noteContent = noteContent.copy(
                     isHintVisible = !event.focusState.isFocused &&
                             noteContent.text.isBlank()

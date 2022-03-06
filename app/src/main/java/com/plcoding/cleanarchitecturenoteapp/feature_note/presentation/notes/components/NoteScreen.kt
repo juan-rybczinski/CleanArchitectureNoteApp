@@ -48,7 +48,7 @@ fun NoteScreen(
                 .padding(16.dp)
         ) {
             Row(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -78,32 +78,32 @@ fun NoteScreen(
                     viewModel.onEvent(NotesEvent.Order(it))
                 }
             }
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        LazyColumn(Modifier.fillMaxSize()) {
-            items(state.notes) { note ->
-                NoteItem(
-                    Modifier
-                        .fillMaxSize()
-                        .clickable {
-                            navController.navigate(
-                                Screen.AddEditNoteScreen.route +
-                                        "?noteId=${note.id}&noteColor=${note.color}"
+            Spacer(modifier = Modifier.height(16.dp))
+            LazyColumn(Modifier.fillMaxSize()) {
+                items(state.notes) { note ->
+                    NoteItem(
+                        Modifier
+                            .fillMaxSize()
+                            .clickable {
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
+                            }, note = note
+                    ) {
+                        viewModel.onEvent(NotesEvent.DeleteNote(note))
+                        scope.launch {
+                            val result = scaffoldState.snackbarHostState.showSnackbar(
+                                message = "Note deleted",
+                                actionLabel = "Undo"
                             )
-                        }, note = note
-                ) {
-                    viewModel.onEvent(NotesEvent.DeleteNote(note))
-                    scope.launch {
-                        val result = scaffoldState.snackbarHostState.showSnackbar(
-                            message = "Note deleted",
-                            actionLabel = "Undo"
-                        )
-                        if (result == SnackbarResult.ActionPerformed) {
-                            viewModel.onEvent(NotesEvent.RestoreNote)
+                            if (result == SnackbarResult.ActionPerformed) {
+                                viewModel.onEvent(NotesEvent.RestoreNote)
+                            }
                         }
                     }
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
-                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }
