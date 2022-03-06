@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesEvent
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesViewModel
+import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -33,7 +34,7 @@ fun NoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navController.navigate(Screen.AddEditNoteScreen.route)
                 }, backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
@@ -85,7 +86,10 @@ fun NoteScreen(
                     Modifier
                         .fillMaxSize()
                         .clickable {
-
+                            navController.navigate(
+                                Screen.AddEditNoteScreen.route +
+                                        "?noteId=${note.id}&noteColor=${note.color}"
+                            )
                         }, note = note
                 ) {
                     viewModel.onEvent(NotesEvent.DeleteNote(note))
