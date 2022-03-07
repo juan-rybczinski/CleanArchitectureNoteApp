@@ -85,10 +85,33 @@ dependencies {
     kapt libs.androidx.room.compiler
     implementation libs.androidx.room.ktx
 
-    // Test
-    testImplementation libs.test.junit
-    androidTestImplementation libs.androidx.test.junit
-    androidTestImplementation libs.androidx.test.espresso
-    androidTestImplementation libs.androidx.compose.ui.test.junit
+    // Local unit tests
+    testImplementation libs.test.core.ktx
+//    testImplementation libs.junit
+    testImplementation libs.junit.ktx
+    testImplementation libs.core.testing
+    testImplementation libs.coroutines.test
+    testImplementation libs.truth
+    testImplementation libs.mockwebserver
+    testImplementation libs.mockk
+    testImplementation libs.compose.ui.test.manifest
+
+    // Instrumentation tests
+//    androidTestImplementation libs.junit
+    androidTestImplementation libs.junit.ktx
+    androidTestImplementation libs.test.espresso
+    androidTestImplementation libs.compose.ui.test.junit
+    androidTestImplementation libs.hilt.android.testing
+    kaptAndroidTest libs.hilt.android.compiler
+    androidTestImplementation libs.coroutines.test
+    androidTestImplementation libs.core.testing
+    androidTestImplementation libs.truth
+    androidTestImplementation libs.test.core.ktx
+    androidTestImplementation libs.mockwebserver
+    androidTestImplementation libs.mockk.android
+    androidTestImplementation libs.test.runner
+
     debugImplementation libs.compose.ui.tooling
+
+
 }

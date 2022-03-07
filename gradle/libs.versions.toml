@@ -16,11 +16,15 @@ room = "2.4.1"
 dagger = "2.41"
 androidxhilt = "1.0.0"
 
+# Test
+mockk = "1.12.3"
+
 [libraries]
 
 # Kotlin
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine"}
 
 # Compose
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -28,6 +32,7 @@ compose-material = { module = "androidx.compose.material:material", version.ref 
 compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
 compose-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-test-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 
 # AndroidX
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
@@ -47,6 +52,7 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 # Dagger
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "dagger" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "dagger" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "dagger" }
 
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxhilt" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxhilt" }
@@ -57,9 +63,20 @@ androidx-hilt-lifecycle-viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.
 android-material = "com.google.android.material:material:1.5.0"
 
 # Test
-test-junit = "junit:junit:4.13.2"
+compose-ui-test-manifest = "androidx.compose.ui:ui-test-manifest:1.1.1"
 
-androidx-test-junit = "androidx.test.ext:junit-ktx:1.1.2"
-androidx-test-espresso = "androidx.test.espresso:espresso-core:3.4.0"
+core-testing = "androidx.arch.core:core-testing:2.1.0"
 
-androidx-compose-ui-test-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+junit = "junit:junit:4.13.2"
+junit-ktx = "androidx.test.ext:junit-ktx:1.1.2"
+
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+
+mockwebserver = "com.squareup.okhttp3:mockwebserver:4.9.3"
+
+test-core-ktx = "androidx.test:core-ktx:1.4.0"
+test-espresso = "androidx.test.espresso:espresso-core:3.4.0"
+test-runner = "androidx.test:runner:1.4.0"
+
+truth = "com.google.truth:truth:1.1.3"
