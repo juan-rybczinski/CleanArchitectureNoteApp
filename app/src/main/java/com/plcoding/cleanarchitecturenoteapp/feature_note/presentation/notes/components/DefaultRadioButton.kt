@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -23,7 +25,11 @@ fun DefaultRadioButton(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RadioButton(selected = selected,
+        RadioButton(
+            modifier = Modifier.semantics {
+                contentDescription = text
+            },
+            selected = selected,
             onClick = onSelect,
             colors = RadioButtonDefaults.colors(
                 selectedColor = MaterialTheme.colors.primary,
